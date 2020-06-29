@@ -37,14 +37,12 @@ function show() {
 function outtaHere(id) {
     let iNum = id.substring(3);
     var todos = get_todos();
-    console.log(todos);
        for (var i =0; i< todos.length; i++) {
             if (i == iNum) {
                 todos.splice(i, 1);
             break;
         }
     }
-    console.log(todos);
     
    buildHTML(todos);
     
