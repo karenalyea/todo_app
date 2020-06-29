@@ -23,7 +23,7 @@ function add() {
     todos.push(textBoxContent);
     
     localStorage.setItem('todos', JSON.stringify(todos));
-    
+    document.getElementById("itemToAdd").value = "";
    show();
 
 }
@@ -46,11 +46,27 @@ function outtaHere(id) {
     let iNum = id.substring(3);
     var todos = get_todos();
     console.log(todos);
-    let html = todos.slice(iNum); 
-    console.log(html);
- 
+       for (var i =0; i< todos.length; i++) {
+            if (i == iNum) {
+                todos.splice(i, 1);
+            break;
+        }
+    }
+    console.log(todos);
+    
+    var html = '<ul>';
+    var newDelID = null;
+    var delID = 'del';
+    for (var i = 0; i< todos.length; i++) {
+        newDelID = delID + i;
+        html +=  '<li>' + todos[i] + '<button onclick=\"outtaHere(id)\" id=\"' + newDelID + '\">Delete</button> </li>';
+    }
+    html += '</ul>';
+    
+    document.getElementById("todos").innerHTML = html;
 }
 
+show();
 document.getElementById("addTodo").addEventListener('click', add);
 
 
