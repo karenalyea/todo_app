@@ -30,16 +30,8 @@ function add() {
 
 function show() {
     var todos = get_todos();
-    var html = '<ul>';
-    var newDelID = null;
-    var delID = 'del';
-    for (var i = 0; i< todos.length; i++) {
-        newDelID = delID + i;
-        html +=  '<li>' + todos[i] + '<button onclick=\"outtaHere(id)\" id=\"' + newDelID + '\">Delete</button> </li>';
-    }
-    html += '</ul>';
-    
-    document.getElementById("todos").innerHTML = html;
+   
+    buildHTML(todos);
 }
 
 function outtaHere(id) {
@@ -54,15 +46,21 @@ function outtaHere(id) {
     }
     console.log(todos);
     
-    var html = '<ul>';
+   buildHTML(todos);
+    
+    localStorage.setItem('todos', JSON.stringify(todos));
+}
+
+function buildHTML(todos) {
+    var html = '<ol>';
     var newDelID = null;
     var delID = 'del';
     for (var i = 0; i< todos.length; i++) {
         newDelID = delID + i;
-        html +=  '<li>' + todos[i] + '<button onclick=\"outtaHere(id)\" id=\"' + newDelID + '\">Delete</button> </li>';
+        html +=  '<li>' + todos[i] + '<button onclick=\"outtaHere(id)\" class=\"btn btn-danger btn-sm"\ id=\"' + newDelID + '\">Delete</button> </li>';
     }
-    html += '</ul>';
-    
+    html += '</ol>';
+
     document.getElementById("todos").innerHTML = html;
 }
 

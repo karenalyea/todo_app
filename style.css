@@ -1,0 +1,19 @@
+
+h3 {
+    padding: 15px 10px 5px 10px;
+}
+
+li {
+
+    padding: 5px 10px 15px 10px;
+    color: #002663;
+  }
+
+  #itemToAdd {
+    border: 1px solid  #002663;
+    margin: 0 10px;
+  }
+
+  .btn-danger {
+      margin-left: 10px;
+  }
